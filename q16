@@ -1,0 +1,22 @@
+p=int(input("No of student: "))
+n=input("Name of student: ")
+e=float(input("stipend: "))
+d=input("Stream: ")
+c=input("avg marks: ")
+q=input("grade: ")
+i=input("class: ") 
+import mysql.connector as sql
+
+mycon=sql.connect(host="localhost",user="root",password="Undertaker1806",database="studentinfo")
+
+cursor=mycon.cursor()
+k=(p,n,e,d,c,q,i)
+l="insert into Student values(%s,%s,%s,%s,%s,%s,%s)"
+cursor.execute(l,k)
+#cursor.execute("DELETE FROM Student WHERE No=12")
+cursor.execute("select * from Student")
+h=cursor.fetchall()
+for v in h:
+    print(v)
+
+mycon.close()

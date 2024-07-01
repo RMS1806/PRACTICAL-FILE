@@ -1,0 +1,33 @@
+import mysql.connector as sql
+
+mycon=sql.connect(host="localhost",user="root",password="Undertaker1806",database="studentinfo")
+
+cursor=mycon.cursor()
+
+n=int(input("Enter Id of student which you want to Delete"))
+data=(n,)
+command=("select * from student where no=%s")
+cursor.execute(command,data)
+output=cursor.fetchall()
+
+if len(output)>0:
+    print("Printing Deleted data: ")
+    for i in output:
+        print(i[1],i[2],i[3],i[4],i[5],i[6])
+   
+    command2=("delete from student where no=%s")
+    data2=(n,)
+    cursor.execute(command2,data2)
+    cursor.execute("select * from student")
+    f=cursor.fetchall()
+    for i in f:
+     print(i)
+    
+else:
+    print("This no does not exist")
+mycon.close()
+    
+
+        
+
+    

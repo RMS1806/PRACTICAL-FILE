@@ -1,0 +1,32 @@
+n=int(input("enter number"))
+t=str(n)
+f=len(t)
+x=0
+for i in t:
+    x+=(int(i)**f)
+if n==x:
+    print("its a armstorng number")
+else:print("its not armstrong number")
+
+
+if n==(int(t[::-1])):
+    print("its a palindrome")
+else:print("its not a palindrome")
+
+sum=0
+for i in range(1,n):
+    if n%i==0:
+        sum=sum+i
+if sum==n:
+    print("its a perfect number")
+else:print("its not a perfect number")
+
+
+
+
+
+
+
+
+
+    

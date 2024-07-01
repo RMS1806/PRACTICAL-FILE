@@ -1,0 +1,70 @@
+#insert ,delete,display,search
+
+def Add(stack,A):
+    stack.append(A)
+    print("Book has been added")
+
+def Delete(stack):
+    if stack==[]:
+        print("Cannot delete(Empty Stack)")
+    else:
+        print("Deleted item: ",stack.pop())
+
+def display(stack):
+    if stack==[]:
+        print("Stack cannot be display(Empty stack)")
+    else:
+        for i in stack:
+            print("Book: ",i)
+        
+
+    
+
+def search(stack,S):
+    p=0
+    if stack==[]:
+        print("Stack cant be searched(Empty stack)")
+    else:
+        for i in stack:
+            if i==S:
+                print("Position of Book searched: ",stack.index(i)+1)
+                p=True
+            elif p!=True:
+                print("Book searched not in the Stack")
+stack=[]
+while True:
+    print("1.ADD")
+    print("2.DISPLAY")
+    print("3.SEARCH")
+    print("4.DELETE")
+    print("5.Exit")
+    n=int(input("Operation which you want to perform: "))
+    if n==1:
+        A=input("Book Name to be added: ")
+        Add(stack,A)
+    elif n==2:
+        display(stack)
+    elif n==3:
+        S=input("Book Name to be searched: ")
+        search(stack,S)
+    elif n==4:
+        Delete(stack)
+    else:
+        break
+
+    
+
+
+
+
+    
+    
+
+          
+      
+
+
+    
+
+
+           

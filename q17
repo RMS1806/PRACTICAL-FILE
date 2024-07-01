@@ -1,0 +1,38 @@
+import mysql.connector as sql
+
+mycon=sql.connect(host="localhost",user="root",password="Undertaker1806",database="studentinfo")
+
+cursor=mycon.cursor()
+
+n=int(input("Enter Id of student which you want to update"))
+data=(n,)
+command=("select * from student where no=%s")
+cursor.execute(command,data)
+output=cursor.fetchall()
+
+if len(output)>0:
+    print("Printing old data")
+    for i in output:
+        print(i[1],i[2],i[3],i[4],i[5],i[6])
+    name=input("Updated name is: ")
+    stp=float(input("Enter the updated stipend: "))
+    stream=input("Enter Updated stream: ")
+    avgmrks=float(input("Updated avg marks: "))
+    grade=input("Enter grade to change: ")
+    clas=input("Enter class to change: ")
+    data2=(name,stp,stream,avgmrks,grade,clas,n)
+    command2=("update student set Name=%s,stipend=%s,Stream=%s,Avgmarks=%s,Grade=%s,class=%s where no=%s")
+    cursor.execute(command2,data2)
+    cursor.execute("select * from student")
+    f=cursor.fetchall()
+    for i in f:
+     print(i)
+    
+else:
+    print("This no does not exist")
+mycon.close()
+    
+
+        
+
+    

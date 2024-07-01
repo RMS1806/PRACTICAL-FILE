@@ -1,0 +1,16 @@
+n=input("Name of student for which data is needed: ")
+import mysql.connector as sql
+
+mycon=sql.connect(host="localhost",user="root",password="Undertaker1806",database="studentinfo")
+
+
+cursor=mycon.cursor()
+l="Select * from Student WHERE Name='%s'"%(n)
+cursor.execute(l)
+data=cursor.fetchone()
+if data:
+    print(data[0])
+print("Data required is: ",data)
+
+
+mycon.close()

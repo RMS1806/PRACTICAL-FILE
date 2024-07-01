@@ -1,0 +1,138 @@
+'''
+write a menu based program to add records to a students
+file with grno, name and marks
+update the marks of a student whose grno is input at runtime
+delete the record of user entered grno
+'''
+import pickle
+import os
+def add_rec():
+    f = open("rec.dat","ab")
+    data = []
+    print("Add new Records")
+    grno = int(input("Enter the Grno :"))
+    sname = input("Enter Student Name:")
+    marks = int(input("Enter marks:"))
+    data.append([grno,sname,marks])
+    pickle.dump(data,f)
+    f.close()
+def disp_all():
+    f=open("rec.dat", 'rb')
+    f.seek(0)
+    try:
+        
+        while(True):
+            data=pickle.load(f)
+            for rec in data:
+                print("GRNO: ",rec[0],"NAME: ",rec[1],"MARKS: ",rec[2])
+                
+                
+                
+    except Exception:
+        f.close()
+                
+def marks_update():
+    f=open("rec.dat", 'rb')
+    f.seek(0)
+    try:
+        L=[]
+        while(True):
+            data=pickle.load(f)
+            for rec in data:
+                x=rec[0]
+                y=rec[1]
+                z=rec[2]
+                L.append([x,y,z])
+    
+    except Exception:
+        print("Some error")
+        f.close()
+    if f.closed==False:
+        f.close()
+    grno=int(input("Enter grno to update marks"))
+    for i in L:
+        if i[0]==grno:
+            print("Name: ",i[1], "Old marks: ", i[2])
+            i[2]=int(input("Enter new marks: "))
+            
+            break
+    else:
+        print("GRNO not found")
+    #print(L)
+    x=[]
+    try:
+        f = open("storage.dat","ab")
+        for i in L:
+            x.append(i)
+            #print(i)
+        pickle.dump(x,f)
+    except:
+        f.close()
+    if f.closed==False:
+        f.close()
+    os.remove("rec.dat")
+    os.rename("storage.dat", "rec.dat")
+    print("Marks updated")
+def delete_rec():
+    f=open("rec.dat", 'rb')
+    f.seek(0)
+    try:
+        L=[]
+        while(True):
+            data=pickle.load(f)
+            for rec in data:
+                x=rec[0]
+                y=rec[1]
+                z=rec[2]
+                L.append([x,y,z])
+
+    except Exception:
+        f.close()
+    if f.closed==False:
+        f.close()
+    grno=int(input("Enter grno to delete"))
+    for i in L:
+        if i[0]==grno:
+            print("Deleting Name: ",i[1], "Marks: ", i[2])
+            L.remove(i)
+            print("REMAINING RECORDS:")
+            break
+    else:
+        print("grno not found")
+    print(L)
+    x=[]
+    try:
+        f = open("storage.dat","ab")
+        for i in L:
+            x.append(i)
+            print(i)
+        pickle.dump(x,f)
+    except:
+        f.close()
+    if f.closed==False:
+        f.close()
+    os.remove("rec.dat")
+    os.rename("storage.dat", "rec.dat")
+
+cho=0
+while(True):
+    print()
+    print("1. Add")
+    print("2. Update")
+    print("3. Delete")
+    print("4. Display")
+    print("5. Exit")
+    print("Choose your option:")
+    cho=int(input("Option: " ))
+    if cho==5:
+        break
+    elif cho==1:
+        add_rec()
+    elif cho==2:
+        marks_update()
+    elif cho==3:
+        delete_rec()
+    elif cho==4:
+        disp_all()
+    else:
+        print("Invalid entry")

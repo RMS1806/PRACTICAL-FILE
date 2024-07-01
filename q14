@@ -1,0 +1,11 @@
+L1=[476,"why me"]
+try:
+    print(L1[0]/L1[1])
+except TypeError:
+    print("Number cant be divided by string")
+
+L2=[69420,0]
+try:
+    print(L2[0]/L2[1])
+except ZeroDivisionError:
+    print("A number cant be dived by zero")

@@ -1,0 +1,31 @@
+sc=0
+ns=0
+nw=0
+sum=0
+f=open(r"C:\Users\vikas\Desktop\rajit.txt.txt",'r+')
+k=f.readlines()
+for i in k:
+    for s in i.split():
+        nw+=1
+
+
+print("the no of words are: ",nw)
+
+for f in k:
+    for d in f:
+        if d.isalnum():
+            ns+=1
+        else:
+            sc+=1
+
+
+print("no of special character are: ",sc)
+
+
+for e in k:
+    for h in e:
+        if h.isdigit():
+            sum+=int(h)
+
+
+print("sum of the digit present in file: ",sum)

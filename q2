@@ -1,0 +1,19 @@
+l=[]
+x=0
+n=int(input("no of elements to be added to list"))
+while x<n:
+    f=int(input("element to be added to list:"))
+    l.append(f)
+    x+=1
+
+print("list before swapping:",l)
+
+for i in range(0,n,2):
+    x1=l[i]
+    x2=l[i+1]
+    l[i]=x2
+    l[i+1]=x1
+
+print("List after swapping places :",l)
+    
+

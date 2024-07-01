@@ -1,0 +1,17 @@
+import random
+
+while True:
+    print("Do You Want To Roll The Dice:(Y/N)")
+    n=input("YOUR ANSWER: ")
+    if n in "Yy":
+        x=random.randint(1,6)
+        print("YOUR NUMBER IS :",x)
+    else:
+        print("Thank you ")
+        break
+
+
+
+
+
+

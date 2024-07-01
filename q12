@@ -1,0 +1,72 @@
+import csv
+
+def displayrec():
+    try:
+    
+        f=open("student.csv","r")
+        recreader=csv.reader(f)
+        for i in recreader:
+            print("Grno:",i[0],"Name: ",i[1],"Grade: ",i[2],"Section: ",i[3])
+    except:
+        f.close()
+    
+        
+    
+def searchno(x):
+    try:
+        f=open("student.csv","r")
+        recreader=csv.reader(f)
+        
+        for i in recreader:
+            if int(i[0])==x:
+              print("Grno:",i[0],"Name: ",i[1],"Grade: ",i[2],"Section: ",i[3])
+              
+              break
+        else:
+            print("The grno doesnt exist")
+    except:
+        f.close()
+
+def appendrec(grno,name,grade,section):
+    try:
+        f=open("student.csv","a",newline='')
+        recwriter=csv.writer(f)
+        recwriter.writerow([grno,name,grade,section])
+    except:
+        f.close()
+
+while True:
+    print("1.Add student")
+    print("2.Display all records")
+    print("3.search for grno")
+    print("4.Exit")
+    n=int(input("Operation which You Want To Perfrom"))
+    if n==1:
+        grno=int(input("Enter Grno"))
+        name=input("Enter Name Of Student")
+        grade=input("Enter grade")
+        section=input("Enter Section")
+        appendrec(grno,name,grade,section)
+    elif n==2:
+        displayrec()
+    elif n==3:
+        g=int(input("Enter Grno To Be Searched"))
+        searchno(g)
+    else:
+        break
+
+    
+
+                
+             
+             
+            
+
+            
+               
+               
+
+            
+
+                
+

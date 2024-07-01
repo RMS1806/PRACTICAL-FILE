@@ -1,0 +1,19 @@
+
+n=int(input("no of students data needed to be added"))
+l={}
+x=0
+while x<n:
+     
+     print("Enter Details of student No.", x+1) 
+     f=input("name of student: ")
+     m=int(input("marks of student: "))
+     r=int(input("roll no: "))
+     l[r]=[f,m]
+     x+=1
+
+
+print("list of students added: ",l)
+for i in l:
+    if l[i][1]>75:
+        print("student who got more than 75 marks","roll no:",i,"-",l[i])
+

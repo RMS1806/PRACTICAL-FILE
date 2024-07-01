@@ -1,0 +1,15 @@
+n=open("ot.txt","w")
+n.write("life is so beautiful\n we need to be grateful to be a able to experience it\n and live it")
+n.close()
+n=open("ot.txt","r")
+t=n.readlines()
+n.close()
+k=open("ot2.txt","w")
+e=open("ot3.txt","w")
+
+for i in t:
+    for l in i.split():
+        if "a" not in l:
+            k.write(l+" ")
+        else:e.write(l+" ")
+       

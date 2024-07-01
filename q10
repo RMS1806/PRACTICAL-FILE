@@ -1,0 +1,86 @@
+import pickle
+import os
+
+def AddRecord():
+    data=[]
+    print("Add New Records")
+    f=open("details.txt","ab")
+    n=int(input("Enter Cellno: "))
+    d=input("Enter Email id: ")
+    k=input("Enter Name: ")
+    data.append([k,n,d])
+    pickle.dump(data,f)
+    f.close()
+
+def displayrecord():
+    f=open("details.txt","rb")
+    f.seek(0)
+    try:
+        
+        while True:
+            data=pickle.load(f)
+            for i in data:
+                print("Name:",i[0],",","Cellno:",i[1],",","Email id:",i[2])
+             
+             
+    except Exception:
+        f.close()
+    if f.closed==False:
+        f.close()
+
+def search():
+    f=open("details.txt","rb")
+    f.seek(0)
+    try:
+        l=[]
+        while True:
+            data=pickle.load(f)
+            for i in data:
+                x=i[0]
+                y=i[1]
+                z=i[2]
+                l.append([x,y,z])
+    except Exception:
+        f.close()
+    if f.closed==False:
+        f.close()
+    n=input("Name to be searched")
+    for x in l:
+        if x[0]==n:
+            
+            print("REQUIRED RECORD:")
+            print("Name:",x[0],"Cell no:",x[1],"Email id:",x[2])
+            break
+        else:
+            print("Name not found")
+
+
+while True:
+    print("1.Add")
+    print("2.Display all")
+    print("3.Search Name")
+    print("4.Exit")
+    n=int(input("Choose your option: "))
+    if n==1:
+        AddRecord()
+    elif n==2:
+        displayrecord()
+    elif n==3:
+        search()
+    elif n==4:
+        break
+    else:
+        print("invalid option")
+
+
+          
+          
+          
+          
+          
+          
+
+
+    
+
+
